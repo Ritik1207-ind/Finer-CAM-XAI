@@ -1,0 +1,14 @@
+numpy<2
+opencv-python
+Pillow
+matplotlib
+scipy
+scikit-learn
+tqdm
+ttach
+torch
+torchvision
+
+grad-cam==1.5.7
+numpy==1.26.4
+opencv-python-headless==4.11.0.86

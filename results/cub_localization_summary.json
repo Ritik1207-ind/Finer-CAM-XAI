@@ -1,0 +1,9 @@
+{
+  "dataset": "CUB-200-2011",
+  "num_test_images": 5794,
+  "classification_accuracy_percent": 81.0666206420435,
+  "mean_gradcam_localization": 0.6242962258426886,
+  "mean_finer_cam_localization": 0.6072680332730065,
+  "gamma": 0.6,
+  "references_per_image": 3
+}

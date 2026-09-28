@@ -1,0 +1,23 @@
+{
+  "dataset": "CUB-200-2011",
+  "num_test_images": 5794,
+  "classification_accuracy_percent": 81.0666206420435,
+  "localization": {
+    "Grad-CAM": 0.6242962258426886,
+    "Finer-CAM": 0.6072680332730065
+  },
+  "RD@5_percent": {
+    "Grad-CAM": 0.4338694777817478,
+    "Finer-CAM": 0.38347683828803664
+  },
+  "RD@10_percent": {
+    "Grad-CAM": 0.5578013100927407,
+    "Finer-CAM": 0.5146738152995732
+  },
+  "deletion_AUC": {
+    "Grad-CAM": 0.08871893638180162,
+    "Finer-CAM": 0.10443428481140697
+  },
+  "gamma": 0.6,
+  "finer_cam_references": 3
+}
