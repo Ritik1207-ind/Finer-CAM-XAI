@@ -5,6 +5,7 @@ from PIL import Image
 class CUBBoundingBoxes:
     def __init__(self, root):
         self.root = Path(root)
+        
 
         self.image_paths = {}
         with open(self.root / "images.txt", "r") as f:
@@ -25,6 +26,7 @@ class CUBBoundingBoxes:
 
     def get_image_path(self, image_id):
         return self.root / "images" / self.image_paths[image_id]
+        #####
 
     def get_transformed_box(self, image_id, size=224):
         """
