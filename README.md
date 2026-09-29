@@ -36,4 +36,4 @@ scripts/                Training, CAM generation, and evaluation scripts
 results/                Final metrics and qualitative outputs
 report/                 Reproduction summary
 
-Reproduction implementation and evaluation completed on CUB-200-2011.
+Reproduction implementation and evaluation completed on CUB-200-2011.//
