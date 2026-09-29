@@ -1,5 +1,5 @@
 import torch
-import torch.nn as nn
+import torch.nn as nnu
 ##imported required functionalities for the script
 from torch.utils.data import DataLoader
 
@@ -56,7 +56,7 @@ def main():
         num_classes=200,
     ).to(DEVICE)
 
-    criterion = nn.CrossEntropyLoss()
+    criterion = nnu.CrossEntropyLoss()
 
     optimizer = torch.optim.Adam(
         classifier.parameters(),
