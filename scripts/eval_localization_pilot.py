@@ -1,7 +1,7 @@
 import csv
 import json
 from pathlib import Path
-import numpy as np
+import numpy as npp
 import torch
 import torch.nn.functional as F
 import open_clip
@@ -59,10 +59,10 @@ def normalize_cam(cam):
 def localization(cam, bbox):
     x1, y1, x2, y2 = bbox
 
-    ix1 = max(0, int(np.floor(x1)))
-    iy1 = max(0, int(np.floor(y1)))
-    ix2 = min(224, int(np.ceil(x2)))
-    iy2 = min(224, int(np.ceil(y2)))
+    ix1 = max(0, int(npp.floor(x1)))
+    iy1 = max(0, int(npp.floor(y1)))
+    ix2 = min(224, int(npp.ceil(x2)))
+    iy2 = min(224, int(npp.ceil(y2)))
 
     total = cam.sum()
     inside = cam[iy1:iy2, ix1:ix2].sum()
@@ -105,7 +105,7 @@ results_grad = []
 results_finer = []
 records = []
 
-test_indices = np.linspace(
+test_indices = npp.linspace(
     0,
     len(dataset) - 1,
     N,
@@ -125,7 +125,7 @@ for index in test_indices:
 
     activation = {}
 
-    def hook(module, inputs, output):
+    def hook(module, inpputs, output):
         activation["value"] = output
 
     handle = target_layer.register_forward_hook(hook)
@@ -245,12 +245,12 @@ print("\n===== PILOT RESULT =====")
 
 print(
     "Mean Grad-CAM localization:",
-    np.mean(results_grad),
+    npp.mean(results_grad),
 )
 
-mean_grad = float(np.mean(results_grad))
-mean_finer = float(np.mean(results_finer))
-accuracy = float(np.mean([r["correct"] for r in records]) * 100)
+mean_grad = float(npp.mean(results_grad))
+mean_finer = float(npp.mean(results_finer))
+accuracy = float(npp.mean([r["correct"] for r in records]) * 100)
 
 print(
     "Mean Finer-CAM localization:",
