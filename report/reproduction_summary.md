@@ -14,12 +14,12 @@ For Finer-CAM, the target class was compared against three reference classes sel
 
 The trained classifier achieved 81.07% classification accuracy on the 5,794-image CUB test set.
 
-| Metric | Grad-CAM | Finer-CAM |
-|---|---:|---:|
-| Localization | 0.6243 | 0.6073 |
-| RD@5% | 0.4339 | 0.3835 |
-| RD@10% | 0.5578 | 0.5147 |
-| Deletion AUC | 0.0887 | 0.1044 |
+| Metric | Grad-CAM | Finer-CAM | Original Paper: Grad-CAM | Original Paper: Finer-CAM |
+|---|---:|---:|---:|---:|
+| Localization | 0.6243 | 0.6073 | 0.582 | 0.629 |
+| RD@5% | 0.4339 | 0.3835 | 0.101 | 0.112 |
+| RD@10% | 0.5578 | 0.5147 | 0.113 | 0.121 |
+| Deletion AUC | 0.0887 | 0.1044 | 0.024 | 0.024 |
 
 ## Comparison With the Paper
 
