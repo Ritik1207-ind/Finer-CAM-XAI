@@ -11,9 +11,6 @@ from src.models.reshape import reshape_transform
 
 device = "cuda"
 
-# -----------------------------
-# Load OpenCLIP
-# -----------------------------
 model, _, preprocess = open_clip.create_model_and_transforms(
     "ViT-B-16",
     pretrained="laion400m_e31",
@@ -25,10 +22,6 @@ model.eval()
 for param in model.parameters():
     param.requires_grad = False
 
-
-# -----------------------------
-# Load trained classifier
-# -----------------------------
 classifier = LinearClassifier(
     input_dim=512,
     num_classes=200
@@ -42,10 +35,6 @@ checkpoint = torch.load(
 classifier.load_state_dict(checkpoint)
 classifier.eval()
 
-
-# -----------------------------
-# Combined model
-# -----------------------------
 class CLIPClassifier(torch.nn.Module):
     def __init__(self, clip_model, classifier):
         super().__init__()
@@ -60,10 +49,6 @@ class CLIPClassifier(torch.nn.Module):
 
 combined_model = CLIPClassifier(model, classifier)
 
-
-# -----------------------------
-# Dataset
-# -----------------------------
 dataset = CUB200Dataset(
     "data/CUB_200_2011",
     train=False,
@@ -77,10 +62,6 @@ image.requires_grad_(True)
 
 print("Ground truth class:", label)
 
-
-# -----------------------------
-# Prediction
-# -----------------------------
 with torch.no_grad():
     logits = combined_model(image)
     predicted_class = logits.argmax(dim=1).item()
@@ -91,10 +72,6 @@ print(
     torch.softmax(logits, dim=1)[0, predicted_class].item()
 )
 
-
-# -----------------------------
-# Grad-CAM
-# -----------------------------
 target_layer = model.visual.transformer.resblocks[-1].ln_1
 
 cam = GradCAM(
