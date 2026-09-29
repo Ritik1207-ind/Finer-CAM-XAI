@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as npp
 import torch
 import torch.nn.functional as F
 import open_clip
@@ -65,7 +65,7 @@ def generate_cams(
 
     target_layer = clip_model.visual.transformer.resblocks[-1].ln_1
 
-    def hook(module, inputs, output):
+    def hook(module, inpputs, output):
         activation["value"] = output
 
     handle = target_layer.register_forward_hook(hook)
@@ -172,7 +172,7 @@ def mask_top_percent(image, cam, percent):
         k=k,
     ).indices.numpy()
 
-    mask = np.zeros(
+    mask = npp.zeros(
         flat.shape,
         dtype=bool,
     )
@@ -191,7 +191,7 @@ def mask_top_percent(image, cam, percent):
 
 
 def deletion_auc(model, image, target_class, cam):
-    fractions = np.arange(
+    fractions = npp.arange(
         0.0,
         1.01,
         0.1,
@@ -216,7 +216,7 @@ def deletion_auc(model, image, target_class, cam):
 
         confidences.append(confidence)
 
-    auc = np.trapz(
+    auc = npp.trapz(
         confidences,
         fractions,
     )
@@ -267,7 +267,7 @@ similarity = compute_similarity(
     weights
 )
 
-indices = np.linspace(
+indices = npp.linspace(
     0,
     len(dataset) - 1,
     N,
@@ -333,10 +333,10 @@ print(
 
 print(
     "Mean Grad-CAM deletion AUC:",
-    np.mean(grad_aucs),
+    npp.mean(grad_aucs),
 )
 
 print(
     "Mean Finer-CAM deletion AUC:",
-    np.mean(finer_aucs),
+    npp.mean(finer_aucs),
 )
