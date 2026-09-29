@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
+##imported required functionalities for the script
 from torch.utils.data import DataLoader
+
 
 from src.datasets.cub import CUB200Dataset
 from src.models.openclip import OpenCLIPViTB16
